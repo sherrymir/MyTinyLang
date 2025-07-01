@@ -3,11 +3,11 @@
 A tiny interpreted programming language built in Python. Designed from scratch with basic variable manipulation, arithmetic operations, conditional logic, and jump-based flow control.
 
 ## 🚀 Features
-- `MOV`, `ADD`, `SUB`, `MUL` — basic arithmetic
-- `PRINT` — output variable value
-- `JUMP [label]` — unconditional jump
-- `IF A < B JUMP label` — conditional branching
-- Labels with `label_name:` syntax
+- `MOV`, `ADD`, `SUB`, `MUL` — basic arithmetic  
+- `PRINT` — output variable value  
+- `JUMP [label]` — unconditional jump  
+- `IF A < B JUMP label` — conditional branching  
+- Labels with `label_name:` syntax  
 
 ## 🧠 Sample Program
 
@@ -31,3 +31,28 @@ PRINT Z
 end_early:
 PRINT A
 END
+
+## 🎮 Try It Yourself
+
+You can write your own programs in the same style! Just add instructions to the program list and run the interpreter:
+program = [
+    "MOV A 10",
+    "SUB A 3",
+    "PRINT A",
+    "END"
+]
+
+🔭 Coming Soon
+Here’s what’s in the pipeline (or in your hands if you wanna build it yourself):
+
+DIV, MOD, and maybe POW
+
+Support for user input via READ
+
+Built-in LOOP syntax for sweet iteration
+
+File-based execution: run from .txt programs
+
+Debug trace mode to see each instruction step-by-step
+
+Syntax errors & crash protection (a.k.a. safety net)
