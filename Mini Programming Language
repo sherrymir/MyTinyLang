@@ -1,0 +1,89 @@
+def run(program: list) -> list:
+  vars = {chr(i): 0 for i in range(ord('A'),ord('Z') + 1)}
+  output = []
+  label = {}
+  pc = 0
+
+  def resolve(x):
+    return vars[x] if x in vars else int(x)
+
+  for idx,val in enumerate(program):
+      if val.endswith(":"):
+        label[val[:-1]] = idx
+
+  while pc < len(program):
+    func = program[pc].split()
+
+    if func[0] == "END":
+      break
+    
+    if func[0] == "MOV":
+      var = func[1]
+      val = int(func[2])
+      vars[var] = val
+    
+    elif func[0] == "ADD":
+      var = func[1]
+      val = int(func[2])
+      vars[var] += val
+
+    elif func[0] == "SUB":
+      var = func[1]
+      val = int(func[2])
+      vars[var] -= val
+
+    elif func[0] == "MUL":
+      var = func[1]
+      val = int(func[2])
+      vars[var] *= int(val)
+    
+    elif func[0] == "PRINT":
+      output.append(vars[func[1]])
+
+    elif func[0] == "JUMP":
+      pc = label[func[1]]
+      continue
+
+    elif func[0] == "IF":
+      left = resolve(func[1])
+      condition = func[2]
+      right = resolve(func[3])
+      
+      teleport = func[5]
+      cal = eval(f"{left} {condition} {right}")
+      if cal:
+        pc = label[teleport]
+        continue
+
+    pc += 1
+  return output
+
+def main():
+  program = [
+    "MOV A 1",
+    "ADD A 2",
+    "SUB A 1",
+    "MUL A 5",
+    "MOV B 15",
+    "IF A < B JUMP less_than",
+    "MOV C 999",
+    "PRINT C",
+    "less_than:",
+    "ADD A 1",
+    "IF A == 11 JUMP match",
+    "SUB A 100",
+    "match:",
+    "IF A != 0 JUMP end_early",
+    "MOV Z 123",
+    "PRINT Z",
+    "end_early:",
+    "PRINT A",
+    "END"
+  ]
+
+  result = run(program)
+  print(result)
+
+if __name__ == "__main__":
+  main()
+ 
