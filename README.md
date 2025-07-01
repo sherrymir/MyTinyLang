@@ -9,29 +9,6 @@ A tiny interpreted programming language built in Python. Designed from scratch w
 - `IF A < B JUMP label` — conditional branching  
 - Labels with `label_name:` syntax  
 
-## 🧠 Sample Program
-
-```plaintext
-MOV A 1
-ADD A 2
-SUB A 1
-MUL A 5
-MOV B 15
-IF A < B JUMP less_than
-MOV C 999
-PRINT C
-less_than:
-ADD A 1
-IF A == 11 JUMP match
-SUB A 100
-match:
-IF A != 0 JUMP end_early
-MOV Z 123
-PRINT Z
-end_early:
-PRINT A
-END
-
 ## 🎮 Try It Yourself
 
 You can write your own programs in the same style! Just add instructions to the program list and run the interpreter:
@@ -56,3 +33,27 @@ File-based execution: run from .txt programs
 Debug trace mode to see each instruction step-by-step
 
 Syntax errors & crash protection (a.k.a. safety net)
+
+## 🧠 Sample Program
+
+```plaintext
+MOV A 1
+ADD A 2
+SUB A 1
+MUL A 5
+MOV B 15
+IF A < B JUMP less_than
+MOV C 999
+PRINT C
+less_than:
+ADD A 1
+IF A == 11 JUMP match
+SUB A 100
+match:
+IF A != 0 JUMP end_early
+MOV Z 123
+PRINT Z
+end_early:
+PRINT A
+END
+
