@@ -19,23 +19,23 @@ def run(program: list) -> list:
     
     if func[0] == "MOV":
       var = func[1]
-      val = int(func[2])
+      val = resolve(func[2])
       vars[var] = val
     
     elif func[0] == "ADD":
       var = func[1]
-      val = int(func[2])
+      val = resolve(func[2])
       vars[var] += val
 
     elif func[0] == "SUB":
       var = func[1]
-      val = int(func[2])
+      val = resolve(func[2])
       vars[var] -= val
 
     elif func[0] == "MUL":
       var = func[1]
-      val = int(func[2])
-      vars[var] *= int(val)
+      val = resolve(func[2])
+      vars[var] *= val
     
     elif func[0] == "PRINT":
       output.append(vars[func[1]])
